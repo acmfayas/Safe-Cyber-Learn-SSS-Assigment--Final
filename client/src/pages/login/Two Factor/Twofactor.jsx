@@ -20,8 +20,14 @@ const Twofactor = (props) => {
           if(response.status === 200){
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('name', response.data.name);
+            localStorage.setItem('role', response.data.role);
             handleClose();
-            navigate("/");
+            if(response.data.role === "admin"){
+              navigate("/admin");
+            }else{
+              navigate("/");
+            }
+            
           }
         })
         .catch(function (error) {

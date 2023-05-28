@@ -20,11 +20,14 @@ import PasswordStrengthMeter from './pages/Resources/PasswordMeter';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SecurityAwarenessGuide from './pages/Resources/SecurityAwareness';
+import Adminage from './admin/Home';
+
+
 
 const HeaderFooterComponent=(Page)=>{
   return(
     <>
-       <NavBarComponent />
+         <NavBarComponent />
         <Page />
        <Footer/>
     </>
@@ -38,6 +41,7 @@ function App() {
           />
           <Routes>
             <Route path="/" element={HeaderFooterComponent(Home)} />
+            <Route path="/admin" element={<Adminage /> } />
             <Route path="/platform" element={HeaderFooterComponent(Platform)} />
             <Route path="/SecurityAwareness" element={HeaderFooterComponent(SecurityAwareness)} />
             <Route path="/PhishingSimulations" element={HeaderFooterComponent(PhishingSimulations)} />
@@ -53,6 +57,7 @@ function App() {
             <Route path='/login' element={!localStorage.getItem("token")?<LoginPage />:HeaderFooterComponent(Home)} />
             <Route path='/register' element={!localStorage.getItem("token")?<RegisterPage />:HeaderFooterComponent(Home)} />
             <Route path='/PasswordStrengthMeter' element={localStorage.getItem("token")?HeaderFooterComponent(PasswordStrengthMeter):<LoginPage />} />
+
           </Routes>
       </BrowserRouter>
   );

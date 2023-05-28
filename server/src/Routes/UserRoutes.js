@@ -14,4 +14,5 @@ router.post('/forgot',UserController.forgototp)
 router.post('/forgot/send',UserController.ForgototpVerification)
 router.post('/NewPassword',UserController.NewPassword)
 router.post('/twofactor',UserController.TwofactorVerification)
+router.post('/createAdmin',UserController.createAdminAccount)
 module.exports = router

@@ -14,6 +14,9 @@ mongoose.connect('mongodb+srv://fayasacm110:Fayas123119@fayasacm.vztessn.mongodb
 const UserRoutes = require("./Routes/UserRoutes")
 app.use("/user",UserRoutes)
 
+const VideoRoutes = require("./Routes/video")
+app.use("/video",VideoRoutes)
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });

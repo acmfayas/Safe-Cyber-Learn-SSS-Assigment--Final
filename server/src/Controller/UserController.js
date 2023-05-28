@@ -315,13 +315,43 @@ const TwofactorVerification = async (req,res)=>{
     if(user.otp === otp){
       user.otp = "";
       const token = jwt.sign({ userId: user._id }, 'sdsawskkajfwsuehgwilflnibwergwsielfugwbjkchwuireyofgwibucnwioe', { expiresIn: '96day' });
-      return res.status(200).json({ token:token ,name:`${user.firstname} ${user.lastename}` });
+      return res.status(200).json({ token:token ,name:`${user.firstname} ${user.lastename}` ,role:user.role});
     }
     
   } catch (error) {
     res.status(400).json({ error: err.message });
   }
 }
+
+const createAdminAccount =async (req,res)=>{
+  try {
+
+    const user = await User.findOne({ email:req.body.email });
+    if(!user){
+      var salt = bcrypt.genSaltSync(10);
+      var hash = bcrypt.hashSync(req.body.password, salt);
+      const newUser = new User({
+        firstname:req.body.firstname,
+        lastename:req.body.lastename,
+        otp:"",
+        email:req.body.email,
+        role:req.body.role,
+        password:hash,
+        isActive:true,
+      });
+      await newUser.save();
+  
+      res.status(201).json({ message: 'User registered successfully' });
+    }
+    if(user){
+      res.status(500).json({ message: ' This Mail already exists' });
+    }
+   
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+}
+
 module.exports = {
   createUser,
   getUsers,
@@ -332,5 +362,6 @@ module.exports = {
   forgototp,
   ForgototpVerification,
   NewPassword,
-  TwofactorVerification
+  TwofactorVerification,
+  createAdminAccount
 };

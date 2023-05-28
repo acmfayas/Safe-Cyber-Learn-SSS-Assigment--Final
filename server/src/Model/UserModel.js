@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 const userSchema = new mongoose.Schema({
   firstname: {
     type: String,
@@ -19,13 +20,16 @@ const userSchema = new mongoose.Schema({
     required: true
   },
   otp: {
-    type: String,
-    required: true
+    type: String
   },
   isActive: {
     type: Boolean,
     required: true,
     default:false
+  },
+  role:{
+    type:String,
+    default:'normal'
   },
   createdAt: {
     type: Date,

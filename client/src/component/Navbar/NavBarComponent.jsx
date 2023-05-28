@@ -60,7 +60,7 @@ const submit = async () =>{
                 <NavDropdown.Item href="/CaseStudies">Case Studies</NavDropdown.Item>
                 {/* <NavDropdown.Item href="/PhishingPlaybook">Phishing Playbook</NavDropdown.Item> */}
                 <NavDropdown.Item href="/PhishingTrainingGuide">Phishing Training Guide</NavDropdown.Item>
-                <NavDropdown.Item href="/SecurityAwarenessGuide">Security Awareness Guide</NavDropdown.Item>
+                <NavDropdown.Item href="/SecurityAwarenessGuide">Security Awareness Videos</NavDropdown.Item>
                 <NavDropdown.Item href="/Questions">Questions</NavDropdown.Item>
                 <NavDropdown.Item href="/PasswordStrengthMeter">PasswordStrengthMeter</NavDropdown.Item>
             </NavDropdown>
